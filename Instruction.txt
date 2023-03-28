@@ -1,0 +1,56 @@
+Running instruction:
+    1. Unzip file
+    2. Navigate to the project folder: `sh cd path/to/upgrade-coding-challenge `
+    3. Install all the dependencies with the following command: `sh mvn install -DskipTests `
+    4. Run test execution  `sh mvn install `
+
+
+Test scenarios:
+
+UI TESTS:
+    1. validateCheckYourRate()
+        Navigate to the /nonDMFunnel page
+        Enter Loan Amount as 2000
+        Select the Purpose of Loan as "Business"
+        Submit "Check your rate" button
+        Assert that url contains Loan Amount and Purpose of Loan
+    2. validateBasicContactData()
+        Enter first name
+        Enter last name
+        Enter home address as 3 digits and wait until the list of suggested addresses appears, then select first one
+        Enter date of birth as 02/02/1990
+        Continue to the next page
+        Assert that you are in the income page
+    3. validateIncomeData()
+        Enter annual income as 150000
+        Enter additional income as 10000
+        Continue with the next page
+        Assert that you are in Login page
+    4. validateCreateAccount()
+        Enter username
+        Enter password
+        Accept Terms of use
+        Submit Check your rate button
+        Assert that you are in Offer page
+    5. validateOffer()
+        Store next values from the page: Loan Amount, Monthly Payment, Term, Interest rate, APR
+        Sign out
+        Validate that Sign out was successful
+    6. validateOfferInMyAccount()
+        Navigate to the /login page
+        Enter username and password from test 4
+        Log in
+        Assert that you see offer page
+        Validate that all values Loan Amount, Monthly Payment, Term, Interest rate, APR corresponds to the values from test 5
+
+API TESTS:
+    1. Positive test
+        apiLoginTest()
+        Validate status code 200
+        Validate firstName is Ian
+        Validate productType is PERSONAL_LOAN
+
+    2. Negative test
+        apiLoginTestNegative()
+        Validate status code 401 when username incorrect
+
